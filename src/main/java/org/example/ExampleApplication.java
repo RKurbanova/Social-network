@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExampleApplication {
     public ExampleApplication (UserRepo userRepo) {
         User dima = new User();
-        dima.setFirstName("Vitalik");
+        dima.setFirstName("Sova");
         userRepo.save(dima);
-        System.out.println(userRepo.findByFirstName("Vitalik"));
+        System.out.println(userRepo.findAllByFirstName("Sova"));
     }
 
     public static void main(String[] args) {

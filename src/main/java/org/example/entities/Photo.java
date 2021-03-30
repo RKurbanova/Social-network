@@ -1,10 +1,17 @@
 package org.example.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "photos")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +28,15 @@ public class Photo {
     private Set<User> likes;
 
     private String date;
+
+    @ManyToOne
+    @JoinColumn(name="post_id")
+    private Post post;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
+    @OneToOne(mappedBy = "avatar")
+    private User avatar_user;
 }

@@ -35,9 +35,8 @@ public class User {
 
     private String about;
 
-    @ManyToOne
-    @JoinColumn(name = "photo_id")
-    private Photo photos;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Photo> photos;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -47,9 +46,8 @@ public class User {
     )
     private Set<User> friends;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post posts;
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Post> posts;
 
     private String status;
 
@@ -63,7 +61,7 @@ public class User {
 
     private String email;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "photo_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "avatar_id")
     private Photo avatar;
 }
