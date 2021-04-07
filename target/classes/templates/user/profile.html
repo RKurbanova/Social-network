@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <ol>
+        <li>
+            <!--/*@thymesVar id="user" type="com.example.socialnetwork.entities.User"*/-->
+            <p th:text="${user.firstName} + ' ' + ${user.lastName}"></p>
+        </li>
+        <li>
+            <!--/*@thymesVar id="name" type=""*/-->
+            <p th:text="${name}"></p>
+        </li>
+    </ol>
+</body>
+</html>

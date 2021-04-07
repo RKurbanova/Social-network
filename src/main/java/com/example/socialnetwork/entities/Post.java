@@ -1,4 +1,4 @@
-package org.example.entities;
+package com.example.socialnetwork.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,16 +8,19 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "photos")
+@Table(name = "posts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Photo {
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private String photo;
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Photo> photos;
+
+    private String text;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -30,13 +33,6 @@ public class Photo {
     private String date;
 
     @ManyToOne
-    @JoinColumn(name="post_id")
-    private Post post;
-
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
-
-    @OneToOne(mappedBy = "avatar")
-    private User avatar_user;
+    @JoinColumn(name="author_id", nullable=false)
+    private User author;
 }

@@ -1,4 +1,4 @@
-package org.example.entities;
+package com.example.socialnetwork.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
